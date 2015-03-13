@@ -40,15 +40,14 @@ public class Bocateria
         }
         else 
         {
-            Cliente clienteAnterior = primeraPersonaEnCola;
             Cliente ultimoCliente = primeraPersonaEnCola;
             
             while (ultimoCliente.getSiguienteEnLaCola() != null)
             {
-                ultimoCliente = clienteAnterior;
+                ultimoCliente = ultimoCliente.getSiguienteEnLaCola();
             }
             
-            clienteAnterior.setSiguienteEnLaCola(nuevoCliente);
+            ultimoCliente.setSiguienteEnLaCola(nuevoCliente);
         }
     }
     
@@ -57,6 +56,15 @@ public class Bocateria
      */
     public void visualizaDatosClientesEnCola()
     {
-        
+        if(primeraPersonaEnCola != null)
+        {
+            Cliente clienteAnterior = primeraPersonaEnCola;
+            
+            while (clienteAnterior.getSiguienteEnLaCola() != null)
+            {
+                System.out.println(clienteAnterior);
+                clienteAnterior = clienteAnterior.getSiguienteEnLaCola();
+            }
+        }
     }
 }
