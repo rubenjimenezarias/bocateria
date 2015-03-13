@@ -75,12 +75,45 @@ public class Bocateria
      */
     public void despacharClienteActual()
     {
-        //Almacenamos el cliente despachado
-        clientesDespachados.put(primeraPersonaEnCola.getNumeroCliente(), primeraPersonaEnCola);
-        //Incrementamos la facturacion
-        facturacionActual += primeraPersonaEnCola.getNumeroDeBocadillos()*PRECIO_BOCADILLO;
-        
-        // Eliminamos el cliente despachado y guardamos el siguiente para qu sea el primero
-        primeraPersonaEnCola = primeraPersonaEnCola.getSiguienteEnLaCola();
+        if (primeraPersonaEnCola != null)
+        {
+            //Almacenamos el cliente despachado
+            clientesDespachados.put(primeraPersonaEnCola.getNumeroCliente(), primeraPersonaEnCola);
+            //Incrementamos la facturacion
+            facturacionActual += primeraPersonaEnCola.getNumeroDeBocadillos()*PRECIO_BOCADILLO;
+            
+            // Eliminamos el cliente despachado y guardamos el siguiente para qu sea el primero
+            primeraPersonaEnCola = primeraPersonaEnCola.getSiguienteEnLaCola();
+        }
+    }
+    
+    /**
+     * Visualizamos por pantalla los datos de la bocateria
+     */
+    public void visualizaDatosBocateria()
+    {
+        System.out.println("Facturacion de la bocateria : " + facturacionActual + " Euros");
+        System.out.println("Estado de la cola");
+        // Visualizamos los datos de los clientes en cola
+        Cliente ultimoCliente = primeraPersonaEnCola;
+            
+        if (ultimoCliente != null)
+        {
+    
+            while (ultimoCliente.getSiguienteEnLaCola() != null)
+            {
+                System.out.println(ultimoCliente.toString());
+                ultimoCliente = ultimoCliente.getSiguienteEnLaCola();
+            }
+            System.out.println(ultimoCliente.toString());
+        }
+        // Visualizamos los datos de los clientes despachados
+        System.out.println("Clientes despachados");
+        int cont = 0;
+        while (cont < clientesDespachados.size())
+        {
+            cont ++;
+            System.out.println(clientesDespachados.get(cont).toString());            
+        }
     }
 }
