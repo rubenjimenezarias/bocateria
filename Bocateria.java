@@ -148,4 +148,39 @@ public class Bocateria
         
         return posicion;
     }
+    
+    /**
+     * Cliente abandona la cola
+     */
+    public void clienteAbandonaCola(int id)
+    {
+        //Buscamos el cliente con el id indicado y lo eliminamos de la cola
+        Cliente ultimoCliente = primeraPersonaEnCola;
+        if(id == primeraPersonaEnCola.getNumeroCliente())
+        {
+            if(primeraPersonaEnCola.getSiguienteEnLaCola() != null)
+            {
+                primeraPersonaEnCola = primeraPersonaEnCola.getSiguienteEnLaCola();
+            }
+            else
+            {
+                primeraPersonaEnCola = null;
+            }
+        }
+        else
+        {
+            if (ultimoCliente != null)
+            {
+                while (ultimoCliente.getSiguienteEnLaCola() != null)
+                {
+                    if (ultimoCliente.getNumeroCliente() == (id-1))
+                    {
+                        ultimoCliente.setSiguienteEnLaCola(ultimoCliente.getSiguienteEnLaCola().getSiguienteEnLaCola());
+                    }
+                    ultimoCliente = ultimoCliente.getSiguienteEnLaCola();
+                }
+            }
+        }
+        visualizaDatosBocateria();
+    }
 }
