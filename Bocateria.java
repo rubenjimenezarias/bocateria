@@ -56,15 +56,13 @@ public class Bocateria
      */
     public void visualizaDatosClientesEnCola()
     {
-        if(primeraPersonaEnCola != null)
-        {
-            Cliente clienteAnterior = primeraPersonaEnCola;
+        Cliente ultimoCliente = primeraPersonaEnCola;
             
-            while (clienteAnterior.getSiguienteEnLaCola() != null)
-            {
-                System.out.println(clienteAnterior);
-                clienteAnterior = clienteAnterior.getSiguienteEnLaCola();
-            }
+        while (ultimoCliente.getSiguienteEnLaCola() != null)
+        {
+            System.out.println(ultimoCliente.toString());
+            ultimoCliente = ultimoCliente.getSiguienteEnLaCola();
         }
+        System.out.println(ultimoCliente.toString());
     }
 }
