@@ -116,6 +116,7 @@ public class Bocateria
             System.out.println(clientesDespachados.get(cont).toString());            
         }
     }
+    
     /**
      * Devuelve la posicion del cliente con mas bocadillos
      * Si no hay clientes devuelve -1
@@ -170,6 +171,8 @@ public class Bocateria
             }
         }
         else
+        //No es el primero asi que miramos si el id 
+        //que buscamos menos uno para modificar el cliente siguiente y saltar uno
         {
             if (ultimoCliente != null)
             {
@@ -181,6 +184,32 @@ public class Bocateria
                     }
                     ultimoCliente = ultimoCliente.getSiguienteEnLaCola();
                 }
+            }
+        }
+    }
+    
+    /**
+     * Ordenamos por cantidad de bocadillos
+     */
+    public void ordenarColaPorNumeroDeBocadillos()
+    {
+        Cliente ultimoCliente = primeraPersonaEnCola;
+            
+        if (ultimoCliente != null)
+        {
+            while (ultimoCliente.getSiguienteEnLaCola() != null)
+            {
+                while (ultimoCliente.getNumeroDeBocadillos() > ultimoCliente.getSiguienteEnLaCola().getNumeroDeBocadillos())
+                {
+                    //siguiente se corre uno y comprobamos si hay un tercero
+                    if(ultimoCliente.getSiguienteEnLaCola().getSiguienteEnLaCola() != null)
+                    {
+                        ultimoCliente.setSiguienteEnLaCola(ultimoCliente.getSiguienteEnLaCola().getSiguienteEnLaCola());
+                    }
+                    //el adelantado sigue al que le ha adelantado
+                    ultimoCliente.getSiguienteEnLaCola().setSiguienteEnLaCola(ultimoCliente);
+                }
+                ultimoCliente = primeraPersonaEnCola;
             }
         }
     }
