@@ -156,8 +156,10 @@ public class Bocateria
     {
         //Buscamos el cliente con el id indicado y lo eliminamos de la cola
         Cliente ultimoCliente = primeraPersonaEnCola;
+        //Comprobamos si es el primer cliente de la cola
         if(id == primeraPersonaEnCola.getNumeroCliente())
         {
+            // Si hay mas clientes ponemos al siguiente en priemra posicion sino dejamos la cola vacia
             if(primeraPersonaEnCola.getSiguienteEnLaCola() != null)
             {
                 primeraPersonaEnCola = primeraPersonaEnCola.getSiguienteEnLaCola();
@@ -181,6 +183,5 @@ public class Bocateria
                 }
             }
         }
-        visualizaDatosBocateria();
     }
 }
