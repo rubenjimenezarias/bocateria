@@ -51,4 +51,12 @@ public class Cliente
         siguienteEnLaCola = cliente;
     }
     
+    /**
+     * Devuelve el siguiente en al cola
+     */
+    public Cliente getSiguienteEnLaCola()
+    {
+        return siguienteEnLaCola;
+    }
+    
 }
