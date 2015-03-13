@@ -116,4 +116,36 @@ public class Bocateria
             System.out.println(clientesDespachados.get(cont).toString());            
         }
     }
+    /**
+     * Devuelve la posicion del cliente con mas bocadillos
+     * Si no hay clientes devuelve -1
+     */
+    public int getPosicionPrimerClienteConMasBocadillos()
+    {
+        int posicion = -1;
+        int max = 0;
+        Cliente ultimoCliente = primeraPersonaEnCola;
+            
+        if (ultimoCliente != null)
+        {
+            //Comprobamos todos lso clientes menos el ultimo
+            while (ultimoCliente.getSiguienteEnLaCola() != null)
+            {
+                if (ultimoCliente.getNumeroDeBocadillos() > max)
+                {
+                    max = ultimoCliente.getNumeroDeBocadillos();
+                    posicion = ultimoCliente.getNumeroCliente();
+                }
+                ultimoCliente = ultimoCliente.getSiguienteEnLaCola();
+            }
+            //Comprobamos al ultimo cliente
+            if (ultimoCliente.getNumeroDeBocadillos() > max)
+                {
+                    max = ultimoCliente.getNumeroDeBocadillos();
+                    posicion = ultimoCliente.getNumeroCliente();
+                }
+        }
+        
+        return posicion;
+    }
 }
