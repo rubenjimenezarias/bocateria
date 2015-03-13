@@ -21,7 +21,7 @@ public class Cliente
     {
         // initialise instance variables
         this. numeroDeBocadillos = numeroDeBocadillos;
-        
+        //Guardamos el numero del cliente
         numeroClienteActual++;
         numeroCliente = numeroClienteActual;
     }
@@ -33,4 +33,22 @@ public class Cliente
     {
         return numeroCliente;
     }
+   
+    /**
+     * Devuelve los datos del Cliente
+     */
+    public String toString()
+    {
+        return "Cliente " + numeroCliente + ": " + numeroDeBocadillos + " bocadillo/s ( " + numeroDeBocadillos*5 + " Euros)";   
+    }
+    
+    /**
+     * Guardamos el siguiente que ha llegado a la cola
+     * @param cliente es el siguiente que llega a la cola
+     */
+    public void setSiguienteEnLaCola(Cliente cliente)
+    {
+        siguienteEnLaCola = cliente;
+    }
+    
 }

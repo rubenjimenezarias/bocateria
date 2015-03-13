@@ -35,5 +35,23 @@ public class Bocateria
         Cliente nuevoCliente = new Cliente(numeroDeBocadillos);
         //Añadimos el cliente a la cola
         clientesDespachados.put(nuevoCliente.getNumeroCliente(),nuevoCliente);
+        // Le ponemos al cliente anterior este cliente en el atributo siguienteEnLaCola
+        if (nuevoCliente.getNumeroCliente() > 1)
+        {
+            clientesDespachados.get(nuevoCliente.getNumeroCliente()-1).setSiguienteEnLaCola(nuevoCliente);
+        }
+    }
+    
+    /**
+     * Visualizamos los datos de los clientes en cola
+     */
+    public void visualizaDatosClientesEnCola()
+    {
+        int cont = 1;
+        while(cont <= clientesDespachados.size())
+        {
+            System.out.println(clientesDespachados.get(cont).toString());
+            cont++;
+        }
     }
 }
