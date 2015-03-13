@@ -1,33 +1,36 @@
 
 /**
  * Write a description of class Cliente here.
+ * Persona que va a comprar en la bocateria
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Ruben Jimenez
+ * @version 1.0
  */
 public class Cliente
 {
     // instance variables - replace the example below with your own
-    private int x;
+    private int numeroCliente;
+    private Cliente siguienteEnLaCola;
+    private int numeroDeBocadillos;
+    private static int numeroClienteActual = 0;
 
     /**
      * Constructor for objects of class Cliente
      */
-    public Cliente()
+    public Cliente(int numeroDeBocadillos)
     {
         // initialise instance variables
-        x = 0;
+        this. numeroDeBocadillos = numeroDeBocadillos;
+        
+        numeroClienteActual++;
+        numeroCliente = numeroClienteActual;
     }
-
+    
     /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * Devuelve el numero del cliente
      */
-    public int sampleMethod(int y)
+    public int getNumeroCliente()
     {
-        // put your code here
-        return x + y;
+        return numeroCliente;
     }
 }

@@ -1,3 +1,4 @@
+import java.util.HashMap;
 
 /**
  * Write a description of class Bocateria here.
@@ -8,7 +9,10 @@
 public class Bocateria
 {
     // instance variables - replace the example below with your own
-    private int x;
+    private Cliente primeraPersonaEnCola;
+    private int facturacionActual;
+    private HashMap <Integer,Cliente> clientesDespachados;
+    private final static int PRECIO_BOCADILLO = 5;
 
     /**
      * Constructor for objects of class Bocateria
@@ -16,18 +20,20 @@ public class Bocateria
     public Bocateria()
     {
         // initialise instance variables
-        x = 0;
+        clientesDespachados = new HashMap<>();
+        facturacionActual = 0;
     }
 
     /**
      * An example of a method - replace this comment with your own
      * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * @param  numeroDeBocadillos del cliente que vamos a poner en cola
      */
-    public int sampleMethod(int y)
+    public void llegaNuevoClienteALaCola(int numeroDeBocadillos)
     {
-        // put your code here
-        return x + y;
+        //Creamos el nuevo cliente
+        Cliente nuevoCliente = new Cliente(numeroDeBocadillos);
+        //Añadimos el cliente a la cola
+        clientesDespachados.put(nuevoCliente.getNumeroCliente(),nuevoCliente);
     }
 }
