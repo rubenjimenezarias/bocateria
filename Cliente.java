@@ -59,4 +59,12 @@ public class Cliente
         return siguienteEnLaCola;
     }
     
+    /**
+     * Devuelve el numero de bocadillos
+     */
+    public int getNumeroDeBocadillos()
+    {
+        return numeroDeBocadillos;
+    }
+    
 }

@@ -69,4 +69,18 @@ public class Bocateria
             System.out.println(ultimoCliente.toString());
         }
     }
+    
+    /**
+     * Despachamos a un cliente y almacenamos el dinero
+     */
+    public void despacharClienteActual()
+    {
+        //Almacenamos el cliente despachado
+        clientesDespachados.put(primeraPersonaEnCola.getNumeroCliente(), primeraPersonaEnCola);
+        //Incrementamos la facturacion
+        facturacionActual += primeraPersonaEnCola.getNumeroDeBocadillos()*PRECIO_BOCADILLO;
+        
+        // Eliminamos el cliente despachado y guardamos el siguiente para qu sea el primero
+        primeraPersonaEnCola = primeraPersonaEnCola.getSiguienteEnLaCola();
+    }
 }
