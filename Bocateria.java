@@ -58,11 +58,15 @@ public class Bocateria
     {
         Cliente ultimoCliente = primeraPersonaEnCola;
             
-        while (ultimoCliente.getSiguienteEnLaCola() != null)
+        if (ultimoCliente != null)
         {
+    
+            while (ultimoCliente.getSiguienteEnLaCola() != null)
+            {
+                System.out.println(ultimoCliente.toString());
+                ultimoCliente = ultimoCliente.getSiguienteEnLaCola();
+            }
             System.out.println(ultimoCliente.toString());
-            ultimoCliente = ultimoCliente.getSiguienteEnLaCola();
         }
-        System.out.println(ultimoCliente.toString());
     }
 }
